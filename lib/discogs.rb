@@ -54,25 +54,26 @@ class Discogs
   end
 end
 
-
-class Album
-  def initialize(album_hash)
-    @album_hash = album_hash
+class GenericDiscogsWrapper
+  attr_reader :json_hash
+  def initialize(json_hash)
+    @json_hash = json_hash
   end
-  %w(styles labels year images community artists id genres title master_id tracklist status release_formatted master_url released country notes companies uri formats resource_url data_quality).each do |resource|
+end
+
+
+class Album < GenericDiscogsWrapper
+  %w(styles  labels year images community artists id genres title master_id tracklist status release_formatted master_url released country notes companies uri formats resource_url data_quality).each do |resource|
     define_method(resource) do
-      @album_hash[resource]
+      @json_hash[resource]
     end
   end
 end
 
-class Artist
-  def initialize(artist_hash)
-    @artist_hash = artist_hash
-  end
+class Artist < GenericDiscogsWrapper
   %w(id name realname profile data_quality namevariations aliases urls images).each do |resource|
     define_method(resource) do
-      @artist_hash[resource]
+      @json_hash[resource]
     end
   end
 end

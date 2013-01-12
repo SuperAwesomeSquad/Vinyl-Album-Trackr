@@ -15,10 +15,19 @@ class Discogs
     @response_code = res.code.to_i
     JSON.parse(res.body)
   end
+  def make_image_request(request)
+    url = URI.parse(request.to_s)
+    Net::HTTP.start(url.host,url.port) do |http|
+      response = http.get(url.path)
+      open("image.jpg", "wb") do |file|
+        file.write(response.body)
+      end
+    end
+  end
   def make_album_request(id)
     request = "/releases/#{id}"
-     result = Album.new(make_get_request(request))
-     result
+    result = Album.new(make_get_request(request))
+    result
   end
   def make_artist_request(id)
     request = "/artists/#{id}"
@@ -29,6 +38,9 @@ class Discogs
     request = "/artists/#{id}/releases"
     make_get_request(request)
   end
+  def make_artist_art_request(id)
+    make_image_request(URI.parse(make_artist_request(id).images.first["uri"]))
+  end
   def make_album_art_request(id)
   end
   def search(terms)
@@ -36,6 +48,7 @@ class Discogs
   def search_results(terms)
   end
 end
+
 
 class Album
   def initialize(album_hash)
@@ -49,7 +62,7 @@ class Album
 end
 
 class Artist
-   def initialize(artist_hash)
+  def initialize(artist_hash)
     @artist_hash = artist_hash
   end
   %w(id name realname profile data_quality namevariations aliases urls images).each do |resource|

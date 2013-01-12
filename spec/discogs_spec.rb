@@ -23,7 +23,10 @@ describe Discogs do
       @result.title.should eq 'The Hollows'
     end
     it "Can retrieve album art" do
-      # some black magic goes here
+      # Uglyyyyy
+      @request.make_artist_art_request(55554)
+      # Check to see if there's a file with the artist name in /images
+      false
     end
   end
   context "Artist Retrieval" do

@@ -16,6 +16,7 @@ class Discogs
     JSON.parse(res.body)
   end
   def make_image_request(request,filename)
+    Dir.mkdir("./images") unless File::directory?("./images")
     url = URI.parse(request.to_s)
     Net::HTTP.start(url.host,url.port) do |http|
       response = http.get(url.path)

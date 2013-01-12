@@ -15,12 +15,13 @@ class Discogs
     @response_code = res.code.to_i
     JSON.parse(res.body)
   end
-  def make_image_request(request,filename)
+  def make_image_request(request,type,filename)
     Dir.mkdir("./images") unless File::directory?("./images")
+    Dir.mkdir("./images/#{type}") unless File::directory?("./images/#{type}")
     url = URI.parse(request.to_s)
     Net::HTTP.start(url.host,url.port) do |http|
       response = http.get(url.path)
-      open("./images/#{filename}.jpg", "wb") do |file|
+      open("./images/#{type}/#{filename}.jpg", "wb") do |file|
         file.write(response.body)
       end
     end
@@ -41,11 +42,11 @@ class Discogs
   end
   def make_artist_art_request(id)
     result = make_artist_request(id)
-    make_image_request(result.images.first["uri"],result.name)
+    make_image_request(result.images.first["uri"],"artist",result.name)
   end
   def make_album_art_request(id)
      result = make_album_request(id)
-     make_image_request(result.images.first["uri"],result.title)
+     make_image_request(result.images.first["uri"],"album",result.title)
   end
   def search(terms)
   end

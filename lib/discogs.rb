@@ -42,11 +42,11 @@ class Discogs
   end
   def make_artist_art_request(id)
     result = make_artist_request(id)
-    make_image_request(result.images.first["uri"],"artist",result.name)
+    make_image_request(result.images.first["uri"],"artists",id)
   end
   def make_album_art_request(id)
      result = make_album_request(id)
-     make_image_request(result.images.first["uri"],"album",result.title)
+     make_image_request(result.images.first["uri"],"albums",id)
   end
   def search(terms)
   end
@@ -61,9 +61,8 @@ class GenericDiscogsWrapper
   end
 end
 
-
 class Album < GenericDiscogsWrapper
-  %w(styles  labels year images community artists id genres title master_id tracklist status release_formatted master_url released country notes companies uri formats resource_url data_quality).each do |resource|
+  %w(styles labels year images community artists id genres title master_id tracklist status release_formatted master_url released country notes companies uri formats resource_url data_quality).each do |resource|
     define_method(resource) do
       @json_hash[resource]
     end

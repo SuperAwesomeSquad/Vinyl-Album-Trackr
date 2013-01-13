@@ -24,6 +24,7 @@ describe Discogs do
     end
     it "Can retrieve album art" do
       @request.make_album_art_request(1)
+      File.exists?("./images/albums/1.jpg").should eq true
     end
   end
   context "Artist Retrieval" do
@@ -41,6 +42,7 @@ describe Discogs do
     end
     it "Can retrieve artist picture" do
       @request.make_artist_art_request(55554)
+      File.exists?("./images/artists/55554.jpg").should eq true
     end
   end
   context "Artist relesese" do

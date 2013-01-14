@@ -11,7 +11,7 @@ class Discogs
     req = Net::HTTP::Get.new(url.path)
     req['User-Agent'] = USER_AGENT
     res = Net::HTTP.start(url.host,url.port) { |http|
-      http.request(url)
+      http.request(req)
     }
     @response_code = res.code.to_i # It's a string otherwise. Annoying.
     JSON.parse(res.body) # Send a nicely-parsed JSON object back

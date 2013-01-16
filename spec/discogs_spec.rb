@@ -1,4 +1,4 @@
-require 'discogs' --color
+require 'discogs' 
 
 describe Discogs do
   before do

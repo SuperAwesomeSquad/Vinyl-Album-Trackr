@@ -15,7 +15,6 @@ class Discogs
     }
     @response_code = res.code.to_i # It's a string otherwise. Annoying.
     JSON.parse(res.body) # Send a nicely-parsed JSON object back
-   url.query
   end
   def make_image_request(request,type,filename)
     Dir.mkdir("./images") unless File::directory?("./images")
@@ -29,7 +28,7 @@ class Discogs
       end
     end
   end
-  def make_album_reques(id)
+  def make_album_request(id)
     request = "/releases/#{id}"
     Album.new(make_get_request(request)) # shoves json into Album instance
   end

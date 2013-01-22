@@ -1,4 +1,4 @@
-require 'discogs' 
+require './app/controllers/discogs_controller.rb' 
 
 describe Discogs do
   before do

@@ -22,11 +22,19 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'better_errors'
   gem 'sextant'
 end
 
+group :test do
+  gem 'capybara', '1.1.2'
+end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+gem 'thin'
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

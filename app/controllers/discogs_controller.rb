@@ -1,6 +1,17 @@
 require 'json'
 require 'net/http'
 
+class DiscogsController < ApplicationController 
+  def index
+  end
+
+  def new
+    @album = Album.new
+  end
+
+end
+
+
 class Discogs
   attr_reader :response_code # The most recent HTTP response code
   USER_AGENT = "Celluloid/0.1 +http://github.com/allynfolksjr/Celluloid" # Unique client ID

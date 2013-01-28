@@ -1,4 +1,4 @@
 Celluloid::Application.routes.draw do
-  root :to => "discogs#index"
+  root :to => "albums#index"
   resources :albums
 end

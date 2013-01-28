@@ -1,15 +1,15 @@
 require 'json'
 require 'net/http'
 
-class DiscogsController < ApplicationController 
-  def index
-  end
+# class DiscogsController < ApplicationController 
+#   def index
+#   end
 
-  def new
-    @album = Album.new
-  end
+#   def new
+#     @album = Album.new
+#   end
 
-end
+# end
 
 
 class Discogs
@@ -75,19 +75,19 @@ end
 # Basic class that has some standard methods and attributes
 class GenericDiscogsWrapper
   attr_reader :json_hash
-  def initialize(json_hash)
-    @json_hash = json_hash
-  end
+  # def initialize(json_hash)
+  #   @json_hash = json_hash
+  # end
 end
 # All album requests will be returned in this object
-class Album < GenericDiscogsWrapper
-  # Define a load of attributes.
-  %w(styles labels year images community artists id genres title master_id tracklist status release_formatted master_url released country notes companies uri formats resource_url data_quality).each do |resource|
-    define_method(resource) do
-      @json_hash[resource]
-    end
-  end
-end
+# class Album < GenericDiscogsWrapper
+#   # Define a load of attributes.
+#   %w(styles labels year images community artists id genres title master_id tracklist status release_formatted master_url released country notes companies uri formats resource_url data_quality).each do |resource|
+#     define_method(resource) do
+#       @json_hash[resource]
+#     end
+#   end
+# end
 # All artist requests will be returned in this object
 class Artist < GenericDiscogsWrapper
   # Define a load of attributes

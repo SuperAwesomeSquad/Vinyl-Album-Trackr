@@ -3,7 +3,7 @@ class AlbumController < ApplicationController
 	end
 
 	def new
-		@album = Album.new
+		@album = Albums.new
 	end
 
 	# def create 
@@ -16,7 +16,7 @@ class AlbumController < ApplicationController
 	# 	end
 	# end
 
-	def show 
-		@album = Album.find(params[:id])
-	end
+	# def show 
+	# 	@album = Album.find(params[:id])
+	# end
 end

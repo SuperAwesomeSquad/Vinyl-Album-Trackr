@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
 	def index
+		@albums = Album.all
 	end
 
 	def new
@@ -7,17 +8,18 @@ class AlbumsController < ApplicationController
 	end
 
 	def create 
-		@album = Album.new(params[:project]) 
+		@album = Album.new(params[:album]) 
 		if @album.save
 			flash[:notice] = "Album has been created."
 			redirect_to @album 
 		else
-		# nothing, yet end
+			flash[:alert] = "Album has not been created."
+			render :action => "new"
 		end
 	end
 
-	# def show 
-	# 	@album = Album.find(params[:id])
-	# end
+	def show 
+		@album = Album.find(params[:id])
+	 end
 
 end

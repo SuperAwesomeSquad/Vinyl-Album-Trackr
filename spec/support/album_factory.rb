@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :album do
-    name "example album"
+    title "Example album"
+    artist "Example artist"
   end
 end

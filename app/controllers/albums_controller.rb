@@ -10,7 +10,7 @@ class AlbumsController < ApplicationController
 	def create 
 		@album = Album.new(params[:album]) 
 		if @album.save
-			flash[:notice] = "Album has been created."
+			flash[:notice] = "Album #{@album.title} has been created."
 			redirect_to @album 
 		else
 			flash[:alert] = "Album has not been created."

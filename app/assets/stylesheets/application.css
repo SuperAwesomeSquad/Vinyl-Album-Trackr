@@ -8,34 +8,6 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
-/* begin custom stuff */
-
-#notice {
-  color: #3a87ad;
-}
-
-/*#alert {
-  color: #c09853;
-}*/
-
-div#notice {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
-}
-
-div#alert {
-  color: #b94a48;
-  background-color: #f2dede;
-  border-color: #eed3d7;
-}
-
-div#errorExplanation ul li {
-  color: #b94a48;
-}
-
-/* end custom stuff */
-
 article,
 aside,
 details,

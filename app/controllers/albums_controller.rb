@@ -36,4 +36,11 @@ class AlbumsController < ApplicationController
 			render :action => "edit" 
 		end
 	end
+
+	def destroy 
+		@album = Album.find(params[:id]) 
+		@album.destroy
+		flash[:notice] = "Album has been deleted." 
+		redirect_to albums_path 
+	end
 end

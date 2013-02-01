@@ -1,4 +1,9 @@
 class AlbumsController < ApplicationController
+	before_filter :find_album, :only => [:show, 
+										:edit,
+										:update,
+										:destroy]
+
 	def index
 		@albums = Album.all
 	end
@@ -18,16 +23,8 @@ class AlbumsController < ApplicationController
 		end
 	end
 
-	def show 
-		@album = Album.find(params[:id])
-	end
-
-	def edit
-	 	@album = Album.find(params[:id]) 
-	end
-
 	def update 
-		@album = Album.find(params[:id]) 
+		
 		if @album.update_attributes(params[:album])
 			flash[:notice] = "Album has been updated."
 			redirect_to @album 
@@ -38,9 +35,17 @@ class AlbumsController < ApplicationController
 	end
 
 	def destroy 
-		@album = Album.find(params[:id]) 
+		 
 		@album.destroy
 		flash[:notice] = "Album has been deleted." 
 		redirect_to albums_path 
+	end
+
+	private 
+	def find_album
+		@album = Album.find(params[:id]) 
+		rescue ActiveRecord::RecordNotFound 
+			flash[:alert] = "The album you were looking for could not be found." 
+			redirect_to albums_path
 	end
 end

@@ -20,6 +20,20 @@ class AlbumsController < ApplicationController
 
 	def show 
 		@album = Album.find(params[:id])
-	 end
+	end
 
+	def edit
+	 	@album = Album.find(params[:id]) 
+	end
+
+	def update 
+		@album = Album.find(params[:id]) 
+		if @album.update_attributes(params[:album])
+			flash[:notice] = "Album has been updated."
+			redirect_to @album 
+		else
+			flash[:alert] = "Empty fields aren't allowed, dummy."
+			render :action => "edit" 
+		end
+	end
 end

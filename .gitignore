@@ -19,3 +19,6 @@
 
 # Ignore OS X stuff
 .DS_Store
+
+# Ignore precompiled assets
+/public/assets/*

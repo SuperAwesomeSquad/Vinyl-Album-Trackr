@@ -16,3 +16,9 @@
 
 # Ignore album/artist pull requests
 /images
+
+# Ignore OS X stuff
+.DS_Store
+
+# Ignore precompiled assets
+/public/assets/*

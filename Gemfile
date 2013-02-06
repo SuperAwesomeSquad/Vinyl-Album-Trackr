@@ -5,6 +5,7 @@ gem 'dynamic_form', '1.1.4'
 gem 'sqlite3'
 gem 'thin'
 gem 'jquery-rails'
+gem 'activeadmin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

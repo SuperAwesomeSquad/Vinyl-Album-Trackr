@@ -3,19 +3,36 @@
 <head>
   <title>Celluloid</title>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
-  <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
+  <%= stylesheet_link_tag   "bootstrap-responsive", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="container">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <ul class="nav">
+          <%= navLinkGenerator(root_path) { link_to "Celluloid", root_path, :class => "brand" } %>
+          <%= navLinkGenerator(albums_path) { link_to "View All Albums", albums_path } %>
+          <%= navLinkGenerator(new_album_path) { link_to "Add Album", new_album_path } %>
+          <%= navLinkGenerator(admin_root_path) { link_to "Admin", admin_root_path } %>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <% flash.each do |key,value| %>
+        <div class='<%= alertStyleClassGenerator(key) %>'>
+         <%= value %>
+       </div>
+       <% end %>
+     </div>
+   </div>
 
-<% flash.each do |key,value| %>
-<div class='<%= alertStyleClassGenerator(key) %>'>
-	<%= value %>
+   <%= yield %>
+
+<%= diagnosticInformation %>
 </div>
-<% end %>
-
-<%= yield %>
-
-</body>
-</html>
+ </body>
+ </html>

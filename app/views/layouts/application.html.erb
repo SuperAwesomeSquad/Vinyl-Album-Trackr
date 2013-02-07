@@ -13,10 +13,10 @@
     <div class="navbar">
       <div class="navbar-inner">
         <ul class="nav">
-          <%= navLinkGenerator(root_path) { link_to "Celluloid", root_path, :class => "brand" } %>
-          <%= navLinkGenerator(albums_path) { link_to "View All Albums", albums_path } %>
-          <%= navLinkGenerator(new_album_path) { link_to "Add Album", new_album_path } %>
-          <%= navLinkGenerator(admin_root_path) { link_to "Admin", admin_root_path } %>
+          <li <%= currentPageActiveClass(root_path) %> ><%= link_to "Celluloid", root_path, :class => "brand" %></li>
+          <li <%= currentPageActiveClass(albums_path) %>><%= link_to "View All Albums", albums_path %></li>
+          <li <%= currentPageActiveClass(new_album_path) %>><%= link_to "Add Album", new_album_path %></li>
+          <li <%= currentPageActiveClass(admin_root_path) %>><%= link_to "Admin", admin_root_path %></li>
         </ul>
       </div>
     </div>

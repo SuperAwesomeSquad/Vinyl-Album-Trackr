@@ -4,5 +4,5 @@ Celluloid::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :albums
-  root :to => "albums#index"
+  root :to => "application#index"
 end

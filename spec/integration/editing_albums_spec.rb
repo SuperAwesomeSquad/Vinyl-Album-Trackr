@@ -4,7 +4,7 @@ feature 'Editing Projects' do
 
 before do
 	Factory(:album, :title => 'Ill Communication', :artist=>'Beastie Boys') 
-	visit '/' 
+	visit '/albums' 
 	click_link 'Ill Communication' 
 	click_link 'Edit Album'
 end

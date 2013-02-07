@@ -1,10 +1,16 @@
-<%= link_to "Add Album", new_album_path %>
 
-<h2>Albums</h2>
-<ul>
-  <% @albums.each do |album| %>
-  <li>
-    <%= link_to album.title, album %> by <%= album.artist %>
-  </li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="span6">
+    <h2>Albums</h2>
+    <ul>
+      <% @albums.each do |album| %>
+      <li>
+        <%= link_to album.title, album %> by <%= album.artist %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="span6">
+    <p class="text-info">Things about albums should go here or something.</p>
+  </div>
+</div>

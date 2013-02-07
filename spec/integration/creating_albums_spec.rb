@@ -9,7 +9,7 @@ feature 'Creating albums' do
     fill_in 'Title', :with => 'Ill Communication'
     fill_in 'Artist', :with => 'Beastie Boys'
     click_button 'Create Album'
-    page.should have_content('Album Ill Communication has been created.')
+    page.should have_content('Album has been created.')
     album = Album.find_by_title('Ill Communication')
     page.current_url.should == album_url(album)
     # page.should have_content("Beastie Boys")

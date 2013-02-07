@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Deleting Albums' do
   scenario 'Deleting an album' do
     album = Factory.create(:album, :title => 'Ill Communication', :artist => 'Beastie Boys')
-    visit '/'
+    visit '/albums'
     click_link 'Ill Communication'
     click_link 'Delete Album'
     page.should have_content("Album has been deleted.")  

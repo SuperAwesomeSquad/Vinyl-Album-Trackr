@@ -6,12 +6,8 @@ module ApplicationHelper
     else "alert alert-notice"
     end
   end
-  def navLinkGenerator(short_path)
-    link = '<li'
-    link << " class='active'" if short_path == request.path
-    link << '>'
-    link << yield
-    link.html_safe
+  def currentPageActiveClass(short_path)
+    "class='active'".html_safe if short_path == request.path
   end
   def diagnosticInformation
     if Rails.env == "development"

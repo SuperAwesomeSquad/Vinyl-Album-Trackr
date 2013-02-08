@@ -3,6 +3,10 @@ Celluloid::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :albums
+  resources :albums do
+    collection do
+      get 'search'
+    end
+  end
   root :to => "application#index"
 end

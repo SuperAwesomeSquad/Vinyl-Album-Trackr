@@ -12,8 +12,9 @@
   <div class="container">
     <div class="navbar">
       <div class="navbar-inner">
-        <ul class="nav">
-          <li <%= currentPageActiveClass(root_path) %> ><%= link_to "Celluloid", root_path, :class => "brand" %></li>
+        <ul class="nav"><li <%= currentPageActiveClass(root_path) %>>
+        <%= link_to "#{image_tag('images/celluloid.png', :size => '20x20', :class => 'img-circle')} Celluloid".html_safe, root_path, :class => "brand" %></li>
+          <!-- <li <%= currentPageActiveClass(root_path) %> ><%= link_to "Celluloid", root_path %></li>-->
           <li <%= currentPageActiveClass(albums_path) %>><%= link_to "View All Albums", albums_path %></li>
           <li <%= currentPageActiveClass(new_album_path) %>><%= link_to "Add Album", new_album_path %></li>
           <li <%= currentPageActiveClass(admin_root_path) %>><%= link_to "Admin", admin_root_path %></li>

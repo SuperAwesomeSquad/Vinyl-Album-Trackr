@@ -27,8 +27,9 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  # gem 'pry-rails'
-  gem 'hirb'
+  gem 'pry-rails'
+  gem 'awesome_print'
+  #gem 'hirb'
 end
 
 group :production do

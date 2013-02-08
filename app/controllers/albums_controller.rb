@@ -41,6 +41,9 @@ class AlbumsController < ApplicationController
 		redirect_to albums_path 
 	end
 
+	def search
+	end
+
 	private 
 	def find_album
 		@album = Album.find(params[:id]) 

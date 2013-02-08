@@ -8,6 +8,7 @@ feature 'Creating albums' do
   scenario "can create an album" do
     fill_in 'Title', :with => 'Ill Communication'
     fill_in 'Artist', :with => 'Beastie Boys'
+    fill_in 'Year', :with => 1994
     click_button 'Create Album'
     page.should have_content('Album has been created.')
     album = Album.find_by_title('Ill Communication')

@@ -19,13 +19,12 @@ feature 'Creating albums' do
   end
   
   scenario "can create an album" do
-    fill_in 'Title', :with => 'Ill Communication'
+    fill_in 'Title', :with => 'License to Ill'
     fill_in 'Artist', :with => 'Beastie Boys'
     click_button 'Create Album'
     page.should have_content('Album has been created.')
-    album = Album.find_by_title('Ill Communication')
+    album = Album.find_by_title('License to Ill')
     page.current_url.should == album_url(album)
-    # page.should have_content("Beastie Boys")
     within("#album #author") do 
       page.should have_content("Created by celluloid@example.com")
     end

@@ -5,6 +5,7 @@ gem 'dynamic_form', '1.1.4'
 gem 'thin'
 gem 'jquery-rails'
 gem 'activeadmin'
+gem 'devise'
 
 
 group :assets do

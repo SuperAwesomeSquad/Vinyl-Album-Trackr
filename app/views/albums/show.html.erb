@@ -1,4 +1,13 @@
-<strong><%= @album.title %></strong> by <em><%= @album.artist %></em>
+<h4><%= @album.title %></strong> by <em><%= @album.artist %></em></h4>
+<table class="table table-hover table-striped">
+<% @album.attributes.each do |atb,value| %>
+<tr>
+  <td><%= atb %></td>
+  <td><%= value %></td>
+</tr>
+<% end %>
+</table>
+<br/>
 <%= link_to "Edit Album", edit_album_path(@album) %>
 <%= link_to "Delete Album", 
 	album_path(@album), 

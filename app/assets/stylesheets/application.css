@@ -1,6 +1,4 @@
-// Place all the styles related to the albums controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
 
 #album, .comment {
     margin: 15px 0 15px 0;
@@ -59,8 +57,7 @@ menu, #album .state, .states {
     font-size: 125%;
     text-decoration: none;
 }
-
-.author {
-	font: 11px;
-	color: #666666
+#author {
+    font: 11px;
+    color: #666666
 }

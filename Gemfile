@@ -29,6 +29,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'awesome_print'
+  gem 'annotate', '>=2.5.0'
   #gem 'hirb'
 end
 

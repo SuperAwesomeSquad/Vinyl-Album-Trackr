@@ -1,5 +1,3 @@
-
-
 ActiveRecord::Schema.define(:version => 20130212035948) do
 
   create_table "active_admin_comments", :force => true do |t|
@@ -46,7 +44,6 @@ ActiveRecord::Schema.define(:version => 20130212035948) do
     t.string   "notes"
     t.string   "labels"
     t.string   "genres"
-  end
 
   add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
 

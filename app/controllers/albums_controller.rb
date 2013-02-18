@@ -25,6 +25,9 @@ class AlbumsController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+	
 	def update 
 		if @album.update_attributes(params[:album])
 			flash[:notice] = "Album has been updated."
@@ -45,7 +48,6 @@ class AlbumsController < ApplicationController
 	end
 
 	def show 
-		@album = Album.find(params[:id])
 	end
 
 	private 

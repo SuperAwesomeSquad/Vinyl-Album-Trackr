@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-	before_filter :authenticate_user!, :except => [:index, :show]
+	# before_filter :authenticate_user!, :except => [:index, :show]
 	before_filter :find_album, :only => [:show, 
 										:edit,
 										:update,
@@ -15,7 +15,7 @@ class AlbumsController < ApplicationController
 
 	def create 
 		@album = Album.new(params[:album])
-		@album.user = current_user
+		# @album.user = current_user
 		if @album.save
 			flash[:notice] = "Album has been created."
 			redirect_to @album 
@@ -42,6 +42,10 @@ class AlbumsController < ApplicationController
 	end
 
 	def search
+	end
+
+	def show 
+		@album = Album.find(params[:id])
 	end
 
 	private 

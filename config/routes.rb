@@ -11,6 +11,11 @@ Celluloid::Application.routes.draw do
     end
   end
   root :to => "application#index"
+
+  get '/sharkfarts',
+  :to => 'sharkfarts#index',
+  :as => 'sharkfarts'
+
 end
 #== Route Map
 # Generated on 11 Feb 2013 16:50
@@ -54,5 +59,5 @@ end
 #                           root            /                                         application#index
 #                   rails_routes            /rails/routes(.:format)                   sextant/routes#index
 #                 sextant_engine            /sextant                                  Sextant::Engine
-# 
+#
 # Routes for Sextant::Engine:

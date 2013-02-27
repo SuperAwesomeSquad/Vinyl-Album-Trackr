@@ -11,5 +11,9 @@ require 'spec_helper'
 #   end
 # end
 describe SharkfartsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "random tina fey message" do
+    it "displays a random string" do
+      helper.generate_saying.class.should == String
+    end
+  end
 end

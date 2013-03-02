@@ -1,1 +1,14 @@
 <h1>Search functionality would go here, presumably</h1>
+<ul>
+  <li>Album: <%= params[:album] %></li>
+  <li>Artist: <%= params[:artist] %></li>
+</ul>
+<%= form_tag do %>
+  <%= label_tag(:album, "Album Name:") %>
+  <%= text_field_tag(:album) %>
+   <%= label_tag(:artist, "Album Artist:") %>
+  <%= text_field_tag(:artist) %>
+  <br/>
+  <%= submit_tag("Search") %>
+<%= submit_tag("Start Over", { :name => 'reset', :id => 'reset_button', :type => "reset" }) %>
+<% end %>

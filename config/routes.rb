@@ -7,7 +7,8 @@ Celluloid::Application.routes.draw do
 
   resources :albums do
     collection do
-      get 'search'
+      post 'discogs_search'
+      get 'discogs_search'
     end
   end
   root :to => "application#index"

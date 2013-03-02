@@ -1,2 +1,6 @@
-<h2>Add Album</h2> 
+<h2>Add Album</h2>
+<% if params[:id] %>
+<h1>Add album...</h1>
+<% else %>
 <%= render "form" %>
+<% end %>

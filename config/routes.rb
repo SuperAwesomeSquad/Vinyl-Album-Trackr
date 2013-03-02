@@ -9,6 +9,7 @@ Celluloid::Application.routes.draw do
     collection do
       post 'discogs_search'
       get 'discogs_search'
+      get 'search'
     end
   end
   root :to => "application#index"

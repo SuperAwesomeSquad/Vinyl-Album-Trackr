@@ -1,0 +1,15 @@
+<h1>Your search results would go here.</h1>
+<table>
+  <tr>
+    <th>Album</th>
+    <th>Artist</th>
+    <th>ID</th>
+  </tr>
+<% @results.each do |h| %>
+<tr>
+  <td><%= h[:album] %></td>
+  <td><%= h[:artist] %></td>
+  <td><%= h[:id] %></td>
+</tr>
+<% end %>
+</table>

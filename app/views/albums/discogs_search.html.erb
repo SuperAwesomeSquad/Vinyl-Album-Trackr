@@ -1,0 +1,17 @@
+<%= params %>
+<table>
+  <tr>
+    <th>Album</th>
+    <th>Artist</th>
+    <th>ID</th>
+  </tr>
+  <%= @search %>
+<% @results.each_with_index do |h,i| %>
+<tr>
+  <td><%= h[:title] %></td>
+  <td><%= h[:artist] %></td>
+  <td><%= h[:year] %></td>
+  <td><%= link_to 'Add This Album', new_album_path(:id => h[:id]) %></td>
+</tr>
+<% end %>
+</table>

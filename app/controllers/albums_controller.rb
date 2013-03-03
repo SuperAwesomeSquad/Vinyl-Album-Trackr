@@ -48,10 +48,11 @@ class AlbumsController < ApplicationController
 	 	def discogs_search
 	 		@results = search_for_album(
 	 		{
-	 			artist: params["album"]["title"],
-	 			artist: params["album"]["artist"]
+	 			q: params["album"]["title"],
+	 			type: "master"
 	 		}
 	 		)
+	 		@search = params
 	 #redirect_to :action => 'discogs_result'
 	end
 

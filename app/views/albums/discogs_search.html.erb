@@ -5,6 +5,7 @@
     <th>Artist</th>
     <th>ID</th>
   </tr>
+  <%= @search %>
 <% @results.each_with_index do |h,i| %>
 <tr>
   <td><%= h[:title] %></td>

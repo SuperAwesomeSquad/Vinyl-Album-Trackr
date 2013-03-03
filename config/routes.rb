@@ -10,6 +10,11 @@ Celluloid::Application.routes.draw do
       get 'search'
     end
   end
+
+  resources :albums do
+    resources :collection
+  end
+
   root :to => "application#index"
 
   get '/sharkfarts',

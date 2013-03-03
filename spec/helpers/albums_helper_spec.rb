@@ -18,8 +18,9 @@
       end
       context "Searching" do
         it "Can make a search or somethin'" do
-          search_for_album({release_title:"Music Has the Right to Children"}).should == "hi"
-        end
+          results = search_for_album({q: "Music Has the Right to Children", type: "master"})
+          pretty_results(results).class.should eq Array
+          end
       end
     end
   end

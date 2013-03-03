@@ -26,6 +26,17 @@ module AlbumsHelper
   end
   def search_for_album(params)
     request = "database/search"
-    make_get_request(request,params)
+    pretty_results(make_get_request(request,params))
+  end
+  def pretty_results(hash)
+    big_ole_array_of_hashes = []
+   hash["results"].each do |album|
+    big_ole_array_of_hashes << {
+      artist: album["title"].split(" - ")[0],
+      title: album["title"].split(" - ")[1],
+      year: album["year"]
+    }
+      end
+      big_ole_array_of_hashes
   end
 end

@@ -5,6 +5,7 @@
     <th>Artist</th>
     <th>ID</th>
   </tr>
+  <%= @results %>
 <% @results.each_with_index do |h,i| %>
 <tr>
   <td><%= h[:album] %></td>

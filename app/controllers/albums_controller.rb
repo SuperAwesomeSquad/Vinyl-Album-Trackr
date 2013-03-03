@@ -46,7 +46,7 @@ class AlbumsController < ApplicationController
 	 	end
 
 	 	def discogs_search
-	 		@results = AlbumsHelper::search_for_album(
+	 		@results = search_for_album(
 	 		{
 	 			artist: params["album"]["title"],
 	 			artist: params["album"]["artist"]

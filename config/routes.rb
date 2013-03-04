@@ -13,9 +13,11 @@ Celluloid::Application.routes.draw do
     end
   end
 
-  resources :albums do
-    resources :collection
-  end
+  resources :albums
+
+  # resources :albums do
+  #   # resources :collection
+  # end
 
   root :to => "application#index"
 

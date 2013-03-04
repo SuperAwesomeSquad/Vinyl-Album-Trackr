@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(:version => 20130303021815) do
     t.string   "notes"
     t.string   "labels"
     t.string   "genres"
-    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

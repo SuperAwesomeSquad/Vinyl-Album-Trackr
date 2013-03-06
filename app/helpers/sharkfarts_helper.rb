@@ -14,6 +14,8 @@ module SharkfartsHelper
     "I really don't think it's fair for me to be on a jury since I'm a hologram.",
     "There ain't no party like a Liz Lemon party 'cause a Liz Lemon party is mandatory!",
     "I am a stabbing robot!",
+    "I have adopted this cat, named her Emily Dickinson",
+    "Watch this. I can fit Emily Dickinson's whole head in my mouth.",
     "I'm not a creative type like you, with your work sneakers and left-handedness.",
   ]
   def generate_saying

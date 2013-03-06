@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216231417) do
+ActiveRecord::Schema.define(:version => 20130306043410) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,10 +56,8 @@ ActiveRecord::Schema.define(:version => 20130216231417) do
     t.string   "notes"
     t.string   "labels"
     t.string   "genres"
-    t.integer  "user_id"
+    t.integer  "discogs_id"
   end
-
-  add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -79,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20130216231417) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "admin"
+    t.integer  "user_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

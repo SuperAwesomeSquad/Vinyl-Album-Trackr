@@ -18,7 +18,7 @@ class Album < ActiveRecord::Base
 
   attr_accessible :artist, :title, :year, :released, :notes, :labels, :genres
 
-  belongs_to :user
+  has_and_belongs_to_many :user
 
   validates :title, :presence => true
   validates :artist, :presence => true

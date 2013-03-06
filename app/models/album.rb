@@ -16,7 +16,7 @@
 
 class Album < ActiveRecord::Base
 
-  attr_accessible :artist, :title, :year, :released, :notes, :labels, :genres
+  attr_accessible :artist, :title, :year, :released, :notes, :labels, :genres, :discogs_id
 
   belongs_to :user
 

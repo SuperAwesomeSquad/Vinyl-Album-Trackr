@@ -81,7 +81,8 @@ class AlbumsController < ApplicationController
  	{artist: json["artists"][0]["name"],
  		title: json["title"],
  		year:  json["year"],
- 		genres: json["genres"]
+ 		genres: json["genres"],
+ 		discogs_id: json["id"]
  	}
  end
  def search_for_album(params)
@@ -94,8 +95,10 @@ class AlbumsController < ApplicationController
  		big_ole_array_of_hashes << {
  			artist: album["title"].split(" - ")[0],
  			title: album["title"].split(" - ")[1],
- 			year: album["year"]
+ 			year: album["year"],
+ 			id: album["id"]
  		}
+ 		pp album
  	end
  	big_ole_array_of_hashes
  end

@@ -24,7 +24,7 @@ class AlbumsController < ApplicationController
 	 			flash[:notice] = "Album has been created."
 	 			redirect_to @album
 	 		else
-	 			flash[:alert] = "Album has not been created."
+	 			flash[:alert] = "Album has not been created because you're lame."
 	 			render :action => "new"
 	 		end
 	 	end

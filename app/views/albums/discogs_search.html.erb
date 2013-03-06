@@ -3,7 +3,8 @@
   <tr>
     <th>Album</th>
     <th>Artist</th>
-    <th>ID</th>
+    <th>Year</th>
+    <td>Discogs ID</td>
   </tr>
   <%= @search %>
 <% @results.each_with_index do |h,i| %>
@@ -11,6 +12,7 @@
   <td><%= h[:title] %></td>
   <td><%= h[:artist] %></td>
   <td><%= h[:year] %></td>
+  <td><%= h[:discogs_id] %></td>
   <td><%= link_to 'Add This Album', new_album_path(:id => h[:id]) %></td>
 </tr>
 <% end %>

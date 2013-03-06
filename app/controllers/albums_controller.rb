@@ -18,6 +18,7 @@ class AlbumsController < ApplicationController
 	 	end
 
 	 	def create
+	 		@params = params
 	 		@album = Album.new(params[:album])
 	 		@album.user = current_user
 	 		if @album.save
@@ -75,15 +76,16 @@ class AlbumsController < ApplicationController
  end
  def make_album_request(id)
  	request = "releases/#{id}"
- 	parse_album_json(make_get_request(request))
+ 	pretty_results(make_get_request(request))
  end
- def parse_album_json(json)
- 	{artist: json["artists"][0]["name"],
- 		title: json["title"],
- 		year:  json["year"],
- 		genres: json["genres"]
- 	}
- end
+ # def parse_album_json(json)
+ # 	{ artist: json["artists"][0]["name"],
+ # 		title: json["title"],
+ # 		year:  json["year"],
+ # 		genres: json["genres"],
+ # 		discogs_id: json["id"]
+ # 	}
+ # end
  def search_for_album(params)
  	request = "database/search"
  	pretty_results(make_get_request(request,params))
@@ -94,7 +96,9 @@ class AlbumsController < ApplicationController
  		big_ole_array_of_hashes << {
  			artist: album["title"].split(" - ")[0],
  			title: album["title"].split(" - ")[1],
- 			year: album["year"]
+ 			year: album["year"],
+ 			discogs_id: album["id"],
+ 			genres: album["genres"]
  		}
  	end
  	big_ole_array_of_hashes

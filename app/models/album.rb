@@ -22,6 +22,6 @@ class Album < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :artist, :presence => true
-  validates :discogs, :presence => true
+  validates :discogs_id, :presence => true
   validates :year, :presence => true
 end

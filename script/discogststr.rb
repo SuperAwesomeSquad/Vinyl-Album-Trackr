@@ -37,38 +37,39 @@ def self.pretty_results(hash)
 end
 end
 
+p $music_has_the_right_ugly
 # Discogs.search_for_album(
 #       {
 #         q: "Music has the right to children",
 #         type: "master"
 #       }
 #       )
-derp = []
-$neil_young_pretty.each do |h|
-  derp << h[:artist]
-end
-derp.uniq!
-p derp
-derp.each do |artist|
-  print "\n\n#{artist}\n....\n"
-  $neil_young_pretty.each do |h|
-    print "* #{h[:title]}\n" if h[:artist] == artist
+# derp = []
+# $neil_young_pretty.each do |h|
+#   derp << h[:artist]
+# end
+# derp.uniq!
+# p derp
+# derp.each do |artist|
+#   print "\n\n#{artist}\n....\n"
+#   $neil_young_pretty.each do |h|
+#     print "* #{h[:title]}\n" if h[:artist] == artist
 
- end
-end
+#  end
+# end
 
-derp = []
+# derp = []
 
-$music_has_the_right_pretty.each do |h|
-  derp << h[:artist]
-end
-derp.uniq!
-p derp
-derp.each do |artist|
-  print "\n\n#{artist}\n....\n"
-  $music_has_.each do |h|
-    print "* #{h[:title]}\n" if h[:artist] == artist
+# $music_has_the_right_pretty.each do |h|
+#   derp << h[:artist]
+# end
+# derp.uniq!
+# p derp
+# derp.each do |artist|
+#   print "\n\n#{artist}\n....\n"
+#   $music_has_.each do |h|
+#     print "* #{h[:title]}\n" if h[:artist] == artist
 
- end
-end
+#  end
+# end
 

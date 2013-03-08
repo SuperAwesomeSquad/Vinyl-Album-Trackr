@@ -1,3 +1,10 @@
+<%= form_tag(discogs_search_albums_path, :method => "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<!--
 <%= form_for(@album, :url => {:action => "discogs_search"}) do |f| %>
 <%= f.error_messages %>
 <p>
@@ -6,3 +13,4 @@
 </p>
   <%= f.submit %>
   <% end %>
+ -->

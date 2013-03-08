@@ -49,7 +49,7 @@ class AlbumsController < ApplicationController
 	 	def discogs_search
 	 		@results = search_for_album(
 	 		{
-	 			q: params["album"]["title"],
+	 			q: params["q"],
 	 			type: "master"
 	 		}
 	 		)
@@ -78,14 +78,6 @@ class AlbumsController < ApplicationController
  	request = "releases/#{id}"
  	pretty_results(make_get_request(request))
  end
- # def parse_album_json(json)
- # 	{ artist: json["artists"][0]["name"],
- # 		title: json["title"],
- # 		year:  json["year"],
- # 		genres: json["genres"],
- # 		discogs_id: json["id"]
- # 	}
- # end
  def search_for_album(params)
  	request = "database/search"
  	pretty_results(make_get_request(request,params))

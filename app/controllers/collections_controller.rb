@@ -1,6 +1,10 @@
 class CollectionsController < ApplicationController
 
 before_filter :find_user
+before_filter :find_collection, :only => [:show,
+										  :edit,
+										  :update,
+										  :destroy]
 
 def new
 	@collection = @user.collections.build
@@ -17,9 +21,16 @@ def create
 		end
 end
 
+def show
+end
+
 private
 def find_user
-@user = User.find(params[:user_id])
+	@user = User.find(params[:user_id])
+end
+
+def find_collection
+	@collection = @user.collection.find(params[:user_id])
 end
 
 end

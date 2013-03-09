@@ -11,7 +11,11 @@ Celluloid::Application.routes.draw do
     end
   end
 
-  resources :albums
+  resources :projects do
+    resources :collections
+  end
+
+  # resources :albums
 
   # resources :albums do
   #   # resources :collection

@@ -1,0 +1,14 @@
+<%= form_for [@user, @collection] do |f| %>
+<%= f.error_messages %> <p>
+<%= f.label :title %>
+<br>
+		</programlisting>
+	</informalexample>
+<%= f.text_field :title %>
+</p>
+<p>
+	<%= f.label :artist %><br>
+	<%= f.text_area :artist %>
+</p>
+<%= f.submit %>
+<% end %>

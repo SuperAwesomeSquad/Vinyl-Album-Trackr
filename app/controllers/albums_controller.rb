@@ -14,7 +14,6 @@ class AlbumsController < ApplicationController
 	 	end
 
 	 	def new
-	 		@album = Album.new
 	 	end
 
 	 	def create
@@ -53,7 +52,10 @@ class AlbumsController < ApplicationController
 	 			type: "master"
 	 		}
 	 		)
-	 		@search = params
+	 		if @results.empty?
+	 			flash[:alert] = "No results for search."
+	 			redirect_to new_album_path
+	 		end
 	 #redirect_to :action => 'discogs_result'
 	end
 

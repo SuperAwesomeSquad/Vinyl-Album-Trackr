@@ -14,16 +14,16 @@ feature "Creating Personal Collection" do
 	end
 
 
-scenario "Verify collection exists" do
-		visit '/'
-		click_link 'Sign in'
-		fill_in 'Email', :with => "celluloid@example.com"
-		fill_in 'Password', :with => "password"
-		click_button "Sign in"
-		page.should have_content("Signed in successfully.")
-		click_on "My Collection"
+# scenario "Verify collection exists" do
+# 		visit '/'
+# 		click_link 'Sign in'
+# 		fill_in 'Email', :with => "celluloid@example.com"
+# 		fill_in 'Password', :with => "password"
+# 		click_button "Sign in"
+# 		page.should have_content("Signed in successfully.")
+# 		click_on "My Collection"
 
-	end
+# 	end
 
 scenario "Add albums to collection" do
 	click_button "Search for Album"

@@ -17,17 +17,10 @@ feature 'Creating albums' do
   end
 
   scenario "can search for and create an album" do
-    fill_in 'Search', :with => 'License to Ill'
+    fill_in 'Search', :with => 'Licensed to Ill'
     click_button 'Search'
-    within("h2#artist") do
-      page.should have_content("Neil Young")
-      page.should haev_content("Harvest")
-    end
-    # album = Album.find_by_title('License to Ill')
-    # page.current_url.should == album_url(album)
-    # within("#album #author") do
-      # page.should have_content("Created by celluloid@example.com")
-    # end
+      page.should have_css('div#beastie-boys')
+      page.should have_content("Licensed To Ill")
   end
 
   scenario "will not accept a blank search" do

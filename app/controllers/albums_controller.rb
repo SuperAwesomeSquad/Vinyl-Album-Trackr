@@ -47,20 +47,19 @@ class AlbumsController < ApplicationController
 
 	 	def discogs_search
 	 		if params["q"].empty?
-	 			flash[:alert] = "No search terms entered."
+	 			flash[:alert] = "No search terms entered; please try again."
 	 			redirect_to new_album_path
 	 		end
-	 		@results = search_for_album(
-	 		{
+
+	 		@results = search_for_album({
 	 			q: params["q"],
 	 			type: "master"
-	 		}
-	 		)
+	 			})
+
 	 		if @results.empty?
-	 			flash[:alert] = "No results for search."
+	 			flash[:alert] = "No results found; please try again."
 	 			redirect_to new_album_path
 	 		end
-	 #redirect_to :action => 'discogs_result'
 	end
 
 	private

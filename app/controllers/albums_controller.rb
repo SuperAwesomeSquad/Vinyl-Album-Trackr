@@ -21,33 +21,33 @@ class AlbumsController < ApplicationController
 	 		@album = Album.new(params[:album])
 	 		@album.user = current_user
 	 		if @album.save
-	 			flash[:notice] = "Album has been created."
+	 			flash[:success] = "Album has been created."
 	 			redirect_to @album
 	 		else
-	 			flash[:alert] = "Album has not been created because you're lame."
+	 			flash[:error] = "Album has not been created because you're lame."
 	 			render :action => "new"
 	 		end
 	 	end
 
 	 	def update
 	 		if @album.update_attributes(params[:album])
-	 			flash[:notice] = "Album has been updated."
+	 			flash[:success] = "Album has been updated."
 	 			redirect_to @album
 	 		else
-	 			flash[:alert] = "Empty fields aren't allowed, dummy."
+	 			flash[:error] = "Empty fields aren't allowed, dummy."
 	 			render :action => "edit"
 	 		end
 	 	end
 
 	 	def destroy
 	 		@album.destroy
-	 		flash[:notice] = "Album has been deleted."
+	 		flash[:success] = "Album has been deleted."
 	 		redirect_to albums_path
 	 	end
 
 	 	def discogs_search
 	 		if params["q"].empty?
-	 			flash[:warning] = "No search terms entered; please try again."
+	 			flash[:error] = "No search terms entered; please try again."
 	 			redirect_to new_album_path
 	 		end
 
@@ -57,7 +57,7 @@ class AlbumsController < ApplicationController
 	 			})
 
 	 		if @results.empty?
-	 			flash[:warning] = "No results found; please try again."
+	 			flash[:error] = "No results found; please try again."
 	 			redirect_to new_album_path
 	 		end
 	end
@@ -66,7 +66,7 @@ class AlbumsController < ApplicationController
 	def find_album
 		@album = Album.find(params[:id])
 	rescue ActiveRecord::RecordNotFound
-		flash[:alert] = "The album you were looking for could not be found."
+		flash[:error] = "The album you were looking for could not be found."
 		redirect_to albums_path
 	end
 	def make_get_request(request,request_params=nil)

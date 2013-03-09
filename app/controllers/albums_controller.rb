@@ -46,6 +46,10 @@ class AlbumsController < ApplicationController
 	 	end
 
 	 	def discogs_search
+	 		if params["q"].empty?
+	 			flash[:alert] = "No search terms entered."
+	 			redirect_to new_album_path
+	 		end
 	 		@results = search_for_album(
 	 		{
 	 			q: params["q"],

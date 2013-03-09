@@ -32,4 +32,12 @@ scenario "Add albums to collection" do
 	page.should have_content("Album has been added.")
 	end
 
+scenario "Creating a collection without valid attributes fails" do
+	click_button "Add to my collection."
+	page.should have_content("Collection has not been created.")
+	page.should have_content("Artist can't be blank")
+	page.should have_content("Title can't be blank")
+end
+
+
 end

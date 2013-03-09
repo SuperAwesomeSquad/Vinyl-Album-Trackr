@@ -1,21 +1,3 @@
+
+
 <%= display_bulk_albums_multiple_artists.html_safe %>
-<!-- <table>
-  <tr>
-    <th>Album</th>
-    <th>Artist</th>
-    <th>ID</th>
-    <th>Discogs ID</th>
-    <th>Genres</th>
-  </tr>
-  <%= @search %>
-<% @results.each_with_index do |h,_i| %>
-<tr>
-  <td><%= h[:title] %></td>
-  <td><%= h[:artist] %></td>
-  <td><%= h[:year] %></td>
-  <td><%= h[:discogs_id] %></td>
-  <td><%= h[:genres] %></td>
-  <td><%= link_to 'Add This Album', albums_path(:discogs_id => h[:discogs_id]), :method => 'POST' %></td>
-</tr>
-<% end %>
-</table> -->

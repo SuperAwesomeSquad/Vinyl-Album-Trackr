@@ -45,6 +45,9 @@ class AlbumsController < ApplicationController
 	 		redirect_to albums_path
 	 	end
 
+	 	def discogs_view_album
+	 	end
+
 	 	def discogs_search
 	 		if params["q"].empty?
 	 			flash[:error] = "No search terms entered; please try again."

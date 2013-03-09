@@ -22,7 +22,7 @@ module AlbumsHelper
         if result[:artist] == artist
           raw_html << "
           <tr>
-          <td width='40%''>#{result[:title]}</td>
+          <td width='40%'>#{link_to result[:title], discogs_view_album_albums_path(:discogs_id => result[:discogs_id])}</td>
           <td width='10%'>#{result[:year]}</td>
           <td width='10%'>#{result[:discogs_id]}</td>
           <td width='20%'>#{result[:genres]}</td>

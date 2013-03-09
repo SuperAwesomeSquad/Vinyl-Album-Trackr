@@ -7,7 +7,7 @@ module AlbumsHelper
       list_of_artists << result[:artist]
     end
     list_of_artists.uniq!.each do |artist|
-      raw_html << "<div id='#{artist}'>"
+      raw_html << "<div id='#{artist.parameterize}'>"
       raw_html << "<h2 class='artist'>#{artist}</h2>"
       raw_html << '<table class="table table-striped">
       <tr>

@@ -1,5 +1,5 @@
 class UsersController < Admin::BaseController
-  	before_filter :find_user, :only => [:show, :edit, :update, :destroy]
+  	before_filter :find_user, :only => [:show, :edit, :update, :destroy, :new, :index]
 
  #  	def index
  #  	@users = User.all(:order => "email")
@@ -8,9 +8,9 @@ class UsersController < Admin::BaseController
  #  	def show
  #  	end
 
- #  	def new
- #  	@user = User.new
-	# end
+  	def new
+	  	@user = User.new
+	end
 
 	# def edit
 	# end
@@ -53,7 +53,7 @@ class UsersController < Admin::BaseController
 		redirect_to admin_users_path
 	end
 
-	private
+private
 	def find_user
 		@user = User.find(params[:id])
 	end

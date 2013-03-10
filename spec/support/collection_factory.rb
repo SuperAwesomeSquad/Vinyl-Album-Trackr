@@ -1,5 +1,6 @@
 FactoryGirl.define do
 	factory :collection do
-		name "Example collection"
+		title "Hello Nasty"
+		artist "Beastie Boys"
 	end
 end

@@ -1,21 +1,14 @@
 require 'spec_helper'
 
-feature "Editing Lists" do
-	before do
-		visit '/'
-		click_link 'Sign in'
-		fill_in 'Email', :with => "celluloid@example.com"
-		fill_in 'Password', :with => "password"
-		click_button "Sign in"
-		page.should have_content("Signed in successfully.")
-	end
+feature "Editing Collections" do
 
-scenario "Edit existing list" do
-	click_link "My list"
-	click_link "Edit list"
-	click_link "Ill Communication"
-	click_button "Add condition"
-	page.should have_content("Album has been updated.")
-end
-
-end
+	scenario "Updating a collection" do
+		Factory(:collection, :title => "Hello Nasty", :artist => "Beastie Boys")
+		visit "/"
+		click_link "My Collection"
+		click_link "Hello Nasty"
+		click_link "Edit Collection"
+		fill_in "Title", :with => "Hello Nasty, Japan"
+		click_button "Update Collection"
+		page.should have_content("Collection has been updated.")
+end end

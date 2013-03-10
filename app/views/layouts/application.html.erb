@@ -27,7 +27,7 @@
                 user_session_path %></li>
           <li <%= currentPageActiveClass(destroy_user_session_path) %>><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
           <li <%= currentPageActiveClass(new_user_registration_path) %>><%= link_to "Sign Up", new_user_registration_path %></li>
-          <%= currentPageActiveClass(user_collection_path(@user)) %>><%= link_to "My Collection", user_collection_path(@user) %>
+          <li <%= currentPageActiveClass(collections_path) %>><%= link_to "My Collection", collections_path %></li>
           <li <%= currentPageActiveClass(albums_path) %>><%= link_to "View All Albums", albums_path %></li>
           <li <%= currentPageActiveClass(new_album_path) %>><%= link_to "Add Album", new_album_path %></li>
           <!-- <li <%= currentPageActiveClass(search_albums_path) %>><%= link_to "Search for Album", search_albums_path %></li> -->
@@ -50,7 +50,6 @@
     <% if user_signed_in? %>
       Hey there, <%= current_user.email %>!
       <br>
-
       <% end %>
 
   </nav>

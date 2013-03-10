@@ -19,8 +19,13 @@ feature 'Creating albums' do
   scenario "can search for and create an album" do
     fill_in 'Search', :with => 'Licensed to Ill'
     click_button 'Search'
-      page.should have_css('div#beastie-boys')
-      page.should have_content("Licensed To Ill")
+    page.should have_css('div#beastie-boys')
+    page.should have_content("Licensed To Ill")
+    within("div#beastie-boys") do
+      click_on "Add This Album"
+    end
+    page.should have_content("Album has been created.")
+    page.should have_content("Licensed To Ill")
   end
 
   scenario "will not accept a blank search" do

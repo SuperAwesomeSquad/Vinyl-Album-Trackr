@@ -1,9 +1,7 @@
 Celluloid::Application.routes.draw do
   devise_for :users
 
-  ActiveAdmin.routes(self)
-
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  # devise_for :admin_users, ActiveAdmin::Devise.config
 
   resources :albums do
     collection do
@@ -14,7 +12,11 @@ Celluloid::Application.routes.draw do
     end
   end
 
-  resources :albums
+  resources :users
+
+  resources :collections
+
+  # resources :albums
 
   # resources :albums do
   #   # resources :collection

@@ -26,4 +26,11 @@ module ApplicationHelper
       "<!-- production -->".html_safe
     end
   end
+  def title(*parts)
+    unless parts.empty?
+      content_for :title do
+        (parts << "Celluloid").join(" - ")
+      end
+    end
+  end
 end

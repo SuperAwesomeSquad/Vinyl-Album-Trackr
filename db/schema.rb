@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130310030726) do
 
+
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
     t.string   "resource_type", :null => false
@@ -61,6 +62,17 @@ ActiveRecord::Schema.define(:version => 20130310030726) do
     t.text     "artists"
   end
 
+  create_table "collections", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "artist"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "collections", ["user_id"], :name => "index_collections_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -79,7 +91,6 @@ ActiveRecord::Schema.define(:version => 20130310030726) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.boolean  "admin"
-    t.integer  "user_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

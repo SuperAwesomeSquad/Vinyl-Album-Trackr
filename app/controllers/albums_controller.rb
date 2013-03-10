@@ -10,7 +10,9 @@ class AlbumsController < ApplicationController
 	 								  :update,
 	 								  :destroy]
 
-
+    def index
+      @albums = Album.all
+    end
 	 	def new
 	 	end
 
@@ -26,7 +28,6 @@ class AlbumsController < ApplicationController
 	 			:genres => discogs_data["genres"],
 	 			:styles => discogs_data["styles"]
 	 			})
-	 		@album.user = current_user
 	 		if @album.save
 	 			flash[:success] = "Album has been created."
 	 			redirect_to @album

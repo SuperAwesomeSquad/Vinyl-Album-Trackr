@@ -10,6 +10,7 @@ Celluloid::Application.routes.draw do
       post 'discogs_search'
       get 'discogs_search'
       get 'search'
+      get 'discogs_view_album'
     end
   end
 

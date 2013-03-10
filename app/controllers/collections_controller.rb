@@ -4,6 +4,7 @@ class CollectionsController < ApplicationController
 # 										  :edit,
 # 										  :update,
 # 										  :destroy]
+before_filter :authenticate_user!
 
 	def index
 		@collections = Collection.all

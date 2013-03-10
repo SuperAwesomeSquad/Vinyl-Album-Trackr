@@ -64,10 +64,10 @@ feature 'Creating Collection' do
 
 	scenario "can create a collection" do
 		click_link 'Add New Collection'
-		fill_in 'Name', with => "Serene"
+		fill_in 'Name', :with => "Your Mom"
 		fill_in 'Title', :with => "Hello Nasty"
 		fill_in 'Artist', :with => "Beastie Boys"
-		click_link 'Create Collection'
+		click_button 'Create Collection'
 		page.should have_content('Collection has been created.')
 	end
 

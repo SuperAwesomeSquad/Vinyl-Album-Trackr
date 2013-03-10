@@ -1,6 +1,5 @@
 class Collection < ActiveRecord::Base
-  attr_accessible :name
-  attr_accessible :title, :artist
+  attr_accessible :name, :title, :artist
 
 
   validates :title, :presence => true

@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(:version => 20130310185446) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.integer  "album_id"
   end
 
   add_index "collections", ["user_id"], :name => "index_collections_on_user_id"

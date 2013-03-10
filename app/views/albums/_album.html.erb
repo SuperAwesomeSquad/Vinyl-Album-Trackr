@@ -1,0 +1,49 @@
+<h2><%= @album["title"] %> - <%= @album["artists"].first["name"] %> (<%= @album["year"] %>)</h2>
+
+<h4>Genre<%= "s" if @album["genres"].size > 1 %></h4>
+<ul>
+<% @album["genres"].each do |genre| %>
+<li><%= genre %></li>
+<% end %>
+</ul>
+
+<h4>Style<%= "s" if @album["styles"].size > 1 %></h4>
+<ul>
+<% @album["styles"].each do |style| %>
+<li><%= style %></li>
+<% end %>
+</ul>
+
+<% if @album["artists"].size > 1 %>
+<h4>Artists</h4>
+<table class="table table-striped">
+  <tr>
+  <th>Artist</th>
+  <th>Tracks</th>
+  <th>Role</th>
+</tr>
+<% @album["artists"].each do |artist| %>
+<tr>
+  <td><%= artist["name"] %></td>
+  <td><%= artist["tracks"] %></td>
+  <td><%= artist["role"] %></td>
+</tr>
+<% end %>
+</table>
+<% end %>
+
+<h4>Tracklist</h4>
+<table class="table table-striped">
+  <tr>
+    <th>Track #</th>
+    <th>Name</th>
+    <th>Duration</th>
+  </tr>
+  <% @album["tracklist"].each do |track| %>
+  <tr>
+    <td><%= track["position"] %></td>
+    <td><%= track["title"] %></td>
+    <td><%= track["duration"] %></td>
+  </tr>
+  <% end %>
+</table>

@@ -19,6 +19,7 @@ module ApplicationHelper
       <ul class="unstyled">'
       diagnostics << "<li>Request path: #{request.path}</li>"
       diagnostics << "<li>Rails Environment: #{Rails.env}</li>"
+      diagnostics << "<li>Params: #{params}</li>"
       diagnostics << '</ul>'
       diagnostics.html_safe
     else

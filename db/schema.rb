@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310030726) do
+ActiveRecord::Schema.define(:version => 20130310185446) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -61,6 +61,11 @@ ActiveRecord::Schema.define(:version => 20130310030726) do
     t.text     "artists"
   end
 
+  create_table "albums_collections", :id => false, :force => true do |t|
+    t.integer "album_id"
+    t.integer "collection_id"
+  end
+
   create_table "collections", :force => true do |t|
     t.string   "name"
     t.string   "title"
@@ -68,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20130310030726) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.integer  "album_id"
   end
 
   add_index "collections", ["user_id"], :name => "index_collections_on_user_id"

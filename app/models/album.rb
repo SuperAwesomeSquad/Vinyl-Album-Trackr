@@ -21,7 +21,8 @@ class Album < ActiveRecord::Base
   serialize :styles
   attr_accessible :artists, :title, :year, :released, :notes, :labels, :genres, :discogs_id, :tracklist, :styles
 
-  has_and_belongs_to_many :user
+  has_and_belongs_to_many :collections
+  has_many :users, :through => :collections
 
   validates :title, :presence => true
   validates :artists, :presence => true

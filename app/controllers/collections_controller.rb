@@ -11,12 +11,12 @@ def new
 end
 
 def create
-	@collection = @user.tickets.build(params[:ticket])
+	@collection = @user.collection.build(params[:id])
 		if @collection.save
-			flash[:notice] = "Your collection has been created."
+			flash[:success] = "Your collection has been created."
 			redirect_to [@user, @collection]
 		else
-			flash[:alert] = "Your collection has not been created."
+			flash[:error] = "Your collection has not been created."
 			render :action => "new"
 		end
 end
@@ -26,11 +26,11 @@ end
 
 private
 def find_user
-	@user = User.find(params[:user_id])
+	@user = User.find(params[:id])
 end
 
 def find_collection
-	@collection = @user.collection.find(params[:user_id])
+	@collection = @user.collection.find(params[:id])
 end
 
 end

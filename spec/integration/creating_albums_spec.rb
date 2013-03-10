@@ -2,48 +2,42 @@ require 'spec_helper'
 
 feature 'Creating albums' do
   before do
-    Factory(:album, :title => "Ill Communication", :artist => "Beastie Boys")
     user = Factory(:user, :email => "celluloid@example.com")
     user.confirm!
 
     visit '/'
-    click_link "Add Album"
+   click_link "Add to My Collection"
     message = "You need to sign in or sign up before continuing."
     page.should have_content(message)
 
     fill_in "Email", :with => "celluloid@example.com"
     fill_in "Password", :with => "password"
     click_button "Sign in"
-    within("h2") { page.should have_content("Add Album") }
+    # within("h2") { page.should have_content("Add to My Collection") }
   end
 
-  scenario "can create an album" do
-    fill_in 'Title', :with => 'Hello Nasty'
-    fill_in 'Artist', :with => 'Beastie Boys'
-    click_button "Create Album"
-    page.should have_content("Hello Nasty")
-    click_link "Add This Album"
-    page.should have_content('Album has been created.')
-    album = Album.find_by_title('Hello Nasty')
-    page.current_url.should == album_url(album)
-    title = "Hello Nasty - Beastie Boys"
-    find("title").should have_content(title)
-    # within("#album #author") do
-    #   page.should have_content("Created by celluloid@example.com")
-    # end
+
+  scenario "can search for and create an album" do
+    fill_in 'Search', :with => 'Licensed to Ill'
+    click_button 'Search'
+    page.should have_css('div#beastie-boys')
+    page.should have_content("Licensed To Ill")
+    within("div#beastie-boys") do
+      click_on "Add This Album"
+    end
+    page.should have_content("Album has been created.")
+    page.should have_content("Licensed To Ill")
   end
 
-  scenario "can not create an album without a name" do
-    click_button "Create Album"
-    page.should have_content("Album has not been created.")
-    page.should have_content("Title can't be blank")
+  scenario "will not accept a blank search" do
+    click_button "Search"
+    page.should have_content("No search terms entered; please try again.")
   end
 
-  # scenario "can not create an album without an artist" do
-  #   fill_in 'Title', :with => 'Hello Nasty'
-  #   click_button "Create Album"
-  #   page.should have_content("Album has not been created.")
-  #   page.should have_content("Artist can't be blank")
-  # end
+  scenario "will handle no results" do
+    fill_in "Search", :with => "Derp derkejfhdsaklfhasklfhwieuhwgsd sdfskdjafh"
+    click_button 'Search'
+    page.should have_content("No results found; please try again.")
 
+  end
 end

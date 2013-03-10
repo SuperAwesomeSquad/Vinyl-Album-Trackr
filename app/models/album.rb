@@ -15,13 +15,16 @@
 #
 
 class Album < ActiveRecord::Base
-
-  attr_accessible :artist, :title, :year, :released, :notes, :labels, :genres, :discogs_id
+  serialize :artists
+  serialize :genres
+  serialize :tracklist
+  serialize :styles
+  attr_accessible :artists, :title, :year, :released, :notes, :labels, :genres, :discogs_id, :tracklist, :styles
 
   belongs_to :user
 
   validates :title, :presence => true
-  validates :artist, :presence => true
+  validates :artists, :presence => true
   validates :discogs_id, :presence => true
   validates :year, :presence => true
 end

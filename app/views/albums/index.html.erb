@@ -5,7 +5,7 @@
     <ul>
       <% @albums.each do |album| %>
       <li>
-        <%= link_to album.title, album %> by <%= album.artist %>
+        <%= link_to album.title, album %> by <%= album.artists.first["name"] %>
       </li>
       <% end %>
     </ul>

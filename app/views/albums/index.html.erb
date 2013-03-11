@@ -2,13 +2,7 @@
 <div class="row">
   <div class="span6">
     <h2>Albums</h2>
-    <ul>
-      <% @albums.each do |album| %>
-      <li>
-        <%= link_to album.title, album %> by <%= album.artists.first["name"] %>
-      </li>
-      <% end %>
-    </ul>
+    <%= albumList %>
   </div>
   <div class="span6">
     <p class="text-info">Things about albums should go here or something.</p>

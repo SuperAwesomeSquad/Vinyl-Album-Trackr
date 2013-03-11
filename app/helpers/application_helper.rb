@@ -1,4 +1,15 @@
 module ApplicationHelper
+  def albumList(list=@albums)
+
+    text = "<ul>"
+      list.each do |album|
+      text << "<li>
+        #{link_to album.title, album}  #{album.artists.first["name"]}
+      </li>"
+      end
+    text << "</ul>"
+    text.html_safe
+  end
   def commaListOfUsersFromAlbum(users)
     user_list = []
     users.each do |u|

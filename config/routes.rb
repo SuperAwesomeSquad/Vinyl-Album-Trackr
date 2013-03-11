@@ -12,7 +12,7 @@ Celluloid::Application.routes.draw do
     end
   end
 
-  resources :users
+  # resources :users
 
   resources :collections
 

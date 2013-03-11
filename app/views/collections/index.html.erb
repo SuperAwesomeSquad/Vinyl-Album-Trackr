@@ -1,10 +1,22 @@
-<%= link_to "Add New Collection", new_collection_path %>
+<% link_to "Add New Collection", new_collection_path %>
 
+<h2>Your Album Collection</h2>
+<% if current_user.collections.last.albums.empty? %>
+<p>Your collection is devoid of albums. :( Why not <%= link_to "add one", new_album_path %>?</p>
+<% else %>
+<ul>
+<% current_user.collections.last.albums.each do |album| %>
+<li>
+  <%= link_to album.title, album %> by <%= album.artists.first["name"] %>
+</li>
+<% end %>
+</ul>
 
-
-<h2>Collections</h2>
+<% end %>
+<p>Collections are always better with more! Why not <%= link_to "add a new album", new_album_path %>?</p>
+<!-- <h2>Collections</h2>
 <ul>
 <% @collection.each do |collection| %>
 	<li><%= link_to collection.name, collection %></li>
 	<% end %>
-</ul>
+</ul> -->

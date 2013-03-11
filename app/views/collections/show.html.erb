@@ -1,5 +1,17 @@
 <h2> <%= @collection.name %> </h2>
 <% title(@collection.name, "Collection") %>
+<% if @collection.albums.empty? %>
+<p>Your collection is devoid of albums. :( Why not <%= link_to "add one", new_album_path %>?</p>
+<% else %>
+<ul>
+<% @collection.albums.each do |album| %>
+<li>
+  <%= link_to album.title, album %> by <%= album.artists.first["name"] %>
+</li>
+<% end %>
+</ul>
+
+<% end %>
 
 
   <%= link_to "Edit Collection", edit_collection_path(@collection) %>

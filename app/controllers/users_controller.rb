@@ -10,6 +10,7 @@ class UsersController < Admin::BaseController
 
   	def new
 	  	@user = User.new
+	  	@user.collections.create(:name=>"Default")
 	end
 
 	# def edit

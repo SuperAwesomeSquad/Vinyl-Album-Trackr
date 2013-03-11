@@ -30,6 +30,7 @@ class AlbumsController < ApplicationController
 	 			})
 	 		if @album.save
 	 			flash[:success] = "Album has been created."
+        current_user.collections.last.albums << @album
 	 			redirect_to @album
 	 		else
 	 			flash[:error] = "Album has not been created because you're lame."

@@ -1,5 +1,5 @@
 <h2><%= @album["title"] %> - <%= @album["artists"].first["name"] %> (<%= @album["year"] %>)</h2><% if ((request[:action] != "discogs_view_album") &&    (@album.user_ids.include?(current_user.id))) %>
-<p>This album is in your collection!</p>
+<p><i class="icon-ok"></i> This album is in your collection!  </p>
 <% end %>
 <h4>Genre<%= "s" if @album["genres"].size > 1 %></h4>
 <ul>

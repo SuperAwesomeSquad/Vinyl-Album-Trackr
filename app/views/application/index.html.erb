@@ -6,7 +6,7 @@
   </div>
   <div class="span6">
     <h4>An album one of our users owns!</h4>
-    <% random_album = Album.first(:offset => rand(Album.count)) %>
+    <% random_album = getRandomAlbum %>
     <p><strong><%= link_to random_album[:title], album_path(random_album) %></strong> by <strong><%= random_album[:artists].first["name"] %></strong></p>
     <p>Owned by <%= commaListOfUsersFromAlbum(random_album.users) %></p>
 

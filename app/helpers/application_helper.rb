@@ -6,6 +6,9 @@ module ApplicationHelper
     end
     user_list.join(", ")
   end
+  def getRandomAlbum
+    Album.first(:offset => rand(Album.count))
+  end
 	def alertStyleClassGenerator(alert)
 		case alert
     when :alert, :error then "alert alert-error"

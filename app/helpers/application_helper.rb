@@ -1,6 +1,5 @@
 module ApplicationHelper
   def albumList(list=@albums)
-
     text = "<ul>"
       list.each do |album|
       text << "<li>
@@ -10,6 +9,7 @@ module ApplicationHelper
     text << "</ul>"
     text.html_safe
   end
+
   def commaListOfUsersFromAlbum(users)
     user_list = []
     users.each do |u|
@@ -17,9 +17,11 @@ module ApplicationHelper
     end
     user_list.join(", ")
   end
+
   def getRandomAlbum
     Album.first(:offset => rand(Album.count))
   end
+
 	def alertStyleClassGenerator(alert)
 		case alert
     when :alert, :error then "alert alert-error"
@@ -29,9 +31,11 @@ module ApplicationHelper
     else "alert alert-notice"
     end
   end
+
   def currentPageActiveClass(short_path)
     "class='active'".html_safe if short_path == request.path
   end
+
   def diagnosticInformation
     if Rails.env == "development"
       diagnostics = '<hr/><div class="row">
@@ -47,6 +51,7 @@ module ApplicationHelper
       "<!-- production -->".html_safe
     end
   end
+
   def title(*parts)
     unless parts.empty?
       content_for :title do

@@ -4,13 +4,7 @@
 <% if current_user.collections.last.albums.empty? %>
 <p>Your collection is devoid of albums. :( Why not <%= link_to "add one", new_album_path %>?</p>
 <% else %>
-<ul>
-<% current_user.collections.last.albums.each do |album| %>
-<li>
-  <%= link_to album.title, album %> by <%= album.artists.first["name"] %>
-</li>
-<% end %>
-</ul>
+<%= albumList(current_user.collections.last.albums) %>
 
 <% end %>
 

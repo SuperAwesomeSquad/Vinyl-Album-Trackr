@@ -1,4 +1,11 @@
 module ApplicationHelper
+  def commaListOfUsersFromAlbum(users)
+    user_list = []
+    users.each do |u|
+      user_list << u.email
+    end
+    user_list.join(", ")
+  end
 	def alertStyleClassGenerator(alert)
 		case alert
     when :alert, :error then "alert alert-error"

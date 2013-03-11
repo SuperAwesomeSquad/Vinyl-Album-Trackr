@@ -4,14 +4,17 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string(255)
-#  artist     :string(255)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  year       :integer
 #  released   :datetime
 #  notes      :string(255)
 #  labels     :string(255)
-#  genres     :string(255)
+#  discogs_id :integer
+#  styles     :string(255)
+#  genres     :text
+#  tracklist  :text
+#  artists    :text
 #
 
 class Album < ActiveRecord::Base

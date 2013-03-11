@@ -44,7 +44,7 @@
   <tr>
     <td><%= track["position"] %></td>
     <td><%= track["title"] %></td>
-    <td><%= track["duration"].empty? ? "Data unknown" : track["duration"] %></td>
+    <td><%= track["duration"].empty? ? "Data unknown <i class='icon-thumbs-down'></i>".html_safe : track["duration"] %></td>
   </tr>
   <% end %>
 </table>

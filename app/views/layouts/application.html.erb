@@ -3,11 +3,11 @@
 <head>
   <title>
     <% if content_for?(:title) %>
-      <%= yield(:title) %>
+    <%= yield(:title) %>
     <% else %>
-      Celluloid
+    Celluloid
     <% end %>
-</title>
+  </title>
   <%= stylesheet_link_tag    "bootstrap", :media => "all" %>
   <%= stylesheet_link_tag   "bootstrap-responsive", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -19,19 +19,17 @@
     <div class="navbar">
       <div class="navbar-inner">
         <ul class="nav"><li <%= currentPageActiveClass(root_path) %>>
-        <%= link_to "#{image_tag('celluloid.png', :size => '15x15', :class => 'img-circle')} Celluloid".html_safe, root_path, :class => "brand" %></li>
-
+          <%= link_to "#{image_tag('celluloid.png', :size => '15x15', :class => 'img-circle')} Celluloid".html_safe, root_path, :class => "brand" %></li>
+          <li <%= currentPageActiveClass(collections_path) %>><%= link_to "My Collection", collections_path %></li>
+          <li <%= currentPageActiveClass(albums_path) %>><%= link_to "View All Albums", albums_path %></li>
+          <li <%= currentPageActiveClass(new_album_path) %>><%= link_to "Add Album", new_album_path %></li>
           <% if !user_signed_in? %>
           <li <%= currentPageActiveClass(new_user_session_path) %>><%= link_to "Log In",
-                user_session_path %></li>
+          user_session_path %></li>
           <li <%= currentPageActiveClass(new_user_registration_path) %>><%= link_to "Sign Up", new_user_registration_path %></li>
           <% else %>
           <li <%= currentPageActiveClass(destroy_user_session_path) %>><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
           <% end %>
-
-          <li <%= currentPageActiveClass(collections_path) %>><%= link_to "My Collection", collections_path %></li>
-          <li <%= currentPageActiveClass(albums_path) %>><%= link_to "View All Albums", albums_path %></li>
-          <li <%= currentPageActiveClass(new_album_path) %>><%= link_to "Add Album", new_album_path %></li>
         </ul>
       </div>
     </div>
@@ -47,14 +45,14 @@
 
    <nav>
     <% if user_signed_in? %>
-      Hey there, <%= current_user.email %>!
-      <br>
-      <% end %>
+    Hey there, <%= current_user.email %>!
+    <br>
+    <% end %>
   </nav>
 
-   <%= yield %>
+  <%= yield %>
 
-<%= diagnosticInformation %>
+  <%= diagnosticInformation %>
 </div>
- </body>
- </html>
+</body>
+</html>

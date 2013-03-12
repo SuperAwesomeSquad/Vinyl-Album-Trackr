@@ -1,31 +1,38 @@
 require 'spec_helper'
 
 describe AlbumsController do
-	it "displays an error for a missing album" do
-		get :show, :id => "not-here"
-		response.should redirect_to(albums_path)
-		message = "The album you were looking for could not be found."
-		flash[:alert].should == message
-	end
 
+  let!(:album) { Factory(:album) }
 
-  it "can make a discogs request" do
-    @result_album = make_album_request(1)
-    @result_album.class.should eq Hash
-  end
-  it "Can return some dope-ass information for a discogs request" do
-    @result_album = make_album_request(1)
-    @result_album[:title].should == "Stockholm"
-    @result_album[:artist].should == "Persuader, The"
-    @result_album[:year].should == 1999
-    @result_album[:genres].should == ["Electronic"]
-  end
-  # context "Searching" do
-  it "Can make a search or somethin'" do
-    results = search_for_album({q: "Music Has the Right to Children", type: "master"})
-    pretty_results(results).class.should eq Array
+  before do
+    visit '/'
+    click_link 'Log In'
+    fill_in 'Email', :with => "celluloid@example.com"
+    fill_in 'Password', :with => "password"
+    click_button "Sign in"
+    # click_link 'Add Album'
   end
 
-  # end
+# 	it "empty album search" do
+# 		click_link "Search"
+# 		response.should redirect_to(albums_path)
+# 		message = "No search terms entered; please try again."
+# 		flash[:alert].should == message
+# 	end
+
+# it "can make a discogs request" do
+#   # fill_in 'Search', :with => 'Hello Nasty'
+#   @result_album = make_album_request(20224)
+#   @result_album.class.should eq Hash
+# end
+
+# it "Can return some awesome information for a discogs request" do
+#   @result_album = make_album_request(20224)
+#   @result_album[:title].should == "Hello Nasty"
+#   @result_album[:artist].should == "Beastie Boys"
+#   @result_album[:year].should == 1999
+#   @result_album[:genres].should == ["Electronic"]
+# end
+
 
 end

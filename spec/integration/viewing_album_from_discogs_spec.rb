@@ -16,7 +16,6 @@ feature 'Viewing individual album information from discogs' do
 
     fill_in 'Search', :with => 'Licensed to Ill'
     click_button 'Search'
-      page.should have_css('div#beastie-boys')
       page.should have_content("Licensed To Ill")
   end
 

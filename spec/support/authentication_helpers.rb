@@ -5,8 +5,8 @@ def sign_in_as!(user)
 	fill_in "Email", :with => "celluloid@example.com"
 	fill_in "Password", :with => "password"
 	click_button "Sign in"
-	# visit '/'
-	# page.should have_content("Signed in successfully.")
+	visit '/'
+	# within(".alert"){ page.should have_content("Signed in successfully.")}
 end
 end
 

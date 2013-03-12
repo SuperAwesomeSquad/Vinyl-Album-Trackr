@@ -2,26 +2,23 @@ require 'spec_helper'
 
 feature 'Navigation Bar' do
 
-  before do
-    visit '/'
-    click_link 'Log In'
-    fill_in "Email", :with => "celluloid@example.com"
-    fill_in "Password", :with => "password"
-    click_button "Sign in"
-    end
-
-  scenario "Link to Home Page" do
-    page.first(".brand").click
-    # find(".brand").click
-    # page.should have_content('Celluloid')
-    # click_link('Celluloid')
-    page.current_url.should == root_url
+  scenario "should be provide navigation functionality" do
+    visit root_path
+    page.should have_link("My Collection")
+    page.should have_link("View All Albums")
+    page.should have_link("Add Album")
   end
 
-  scenario "Link to View All Albums" do
-    click_link('View All Albums')
-    page.current_url.should == albums_url
+  scenario "should be provide user functionality" do
+    visit root_path
+    page.should have_link("Log In")
+    page.should have_link("Sign Up")
   end
+
+  # scenario "Link to View All Albums" do
+  #   click_link('View All Albums')
+  #   page.current_url.should == albums_url
+  # end
   # scenario "Should show your current location" do
   #   find(:xpath, "//li[@class='active']/a").text.should == "Celluloid"
   #   click_link('View All Albums')

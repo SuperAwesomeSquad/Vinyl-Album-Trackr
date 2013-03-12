@@ -2,8 +2,8 @@
 <%= form_tag(discogs_search_albums_path, :method => "get") do %>
 
 
-	<%= label_tag(:Search, "Search")%>
-  	<%= text_field_tag(:Search) %>
+	<%= label_tag(:q, "Search")%>
+  	<%= text_field_tag(:q) %>
  	<%= submit_tag("Search") %>
 <% end %>
 

@@ -5,9 +5,12 @@
     <%= image_tag 'celluloid.png',  :size => '200x200', :class => 'img-circle'  %>
   </div>
   <div class="span6">
-    <% random_album = getRandomAlbum %>
+    <%  if random_album = getRandomAlbum %>
     <p class="lead"><strong><%= link_to random_album[:title], album_path(random_album) %></strong> by <strong><%= random_album[:artists].first["name"] %></strong></p>
     <p>Owned by <%= commaListOfUsersFromAlbum(random_album.users) %></p>
+    <% else %>
+    <p class="lead">No albums exist. :( Why not <%= link_to "add one", new_album_path %>?</p>
+    <% end %>
 
 
   </div>

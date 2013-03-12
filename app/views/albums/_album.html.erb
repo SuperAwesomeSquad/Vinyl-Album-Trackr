@@ -1,5 +1,6 @@
-<h2><%= @album["title"] %> - <%= @album["artists"].first["name"] %> (<%= @album["year"] %>)</h2>
-
+<h2><%= @album["title"] %> - <%= @album["artists"].first["name"] %> (<%= @album["year"] %>)</h2><% if ((request[:action] != "discogs_view_album") &&    (@album.user_ids.include?(current_user.id))) %>
+<p><i class="icon-ok"></i> This album is in one of your collections!  </p>
+<% end %>
 <h4>Genre<%= "s" if @album["genres"].size > 1 %></h4>
 <ul>
 <% @album["genres"].each do |genre| %>
@@ -43,7 +44,7 @@
   <tr>
     <td><%= track["position"] %></td>
     <td><%= track["title"] %></td>
-    <td><%= track["duration"] %></td>
+    <td><%= track["duration"].empty? ? "Data unknown <i class='icon-thumbs-down'></i>".html_safe : track["duration"] %></td>
   </tr>
   <% end %>
 </table>

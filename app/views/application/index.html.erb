@@ -2,10 +2,13 @@
 <div class="row">
   <div class="span6">
     <h2>Welcome to Celluloid!</h2>
-    <p>In the dark future, there is only war.</p>
     <%= image_tag 'celluloid.png',  :size => '200x200', :class => 'img-circle'  %>
   </div>
   <div class="span6">
-    <p>Awesome text about an album should go here.</p>
+    <% random_album = getRandomAlbum %>
+    <p class="lead"><strong><%= link_to random_album[:title], album_path(random_album) %></strong> by <strong><%= random_album[:artists].first["name"] %></strong></p>
+    <p>Owned by <%= commaListOfUsersFromAlbum(random_album.users) %></p>
+
+
   </div>
 </div>

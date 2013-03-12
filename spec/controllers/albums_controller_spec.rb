@@ -9,10 +9,6 @@ describe AlbumsController do
 	end
 
 
-  # context "Viewing things" do
-  #   before do
-  #     @result_album = make_album_request(1)
-  #   end
   it "can make a discogs request" do
     @result_album = make_album_request(1)
     @result_album.class.should eq Hash

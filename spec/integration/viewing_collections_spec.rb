@@ -1,19 +1,19 @@
 require 'spec_helper'
 
 feature "Viewing collections" do
-	let!(:user) { Factory(:user) }
-  	let!(:collection) { Factory(:collection) }
 
-  	before do
-    	sign_in_as!(user)
-    	define_permission!(user, :view, project)
-  	end
+  scenario "Viewing a collection" do
+      visit '/'
+      click_link 'Log In'
+      fill_in "Email", :with => "celluloid@example.com"
+      fill_in "Password", :with => "password"
+      click_button 'Sign in'
 
-  scenario "Listing all collections" do
-    visit '/'
-    page.should_not have_content("Hello Nasty")
-    click_link collection.name
-    page.current_url.should == project_url(collection)
-  end
+
+      visit '/collections'
+      within("h2") do
+        page.should have_content("Your Album Collection")
+      end
+   end
 
 end

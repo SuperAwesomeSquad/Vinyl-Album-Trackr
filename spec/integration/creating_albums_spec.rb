@@ -56,19 +56,19 @@ feature 'Creating Albums' do
       # page.should have_content("Hey there, celluloid@example.com!")
       # within("container"){ page.should have_content("Signed in successfully.")}
 
-  scenario "can create an album" do
-    click_link 'Add Album'
-    page.should have_css("h2", :text => "Your Album Collection")
-    # do
-    #     page.should have_content("Your Album Collection")
-    #   end
-    # click_link 'Add Album'
-    fill_in 'Search', :with => 'Licensed To Ill'
-    click_button 'Search'
-    page.should have_content('Licensed to Ill')
-    within("div#beastie-boys") do
-      click_on "Add This Album"
-    end
-  end
+  # scenario "can create an album" do
+  #   click_link 'Add Album'
+  #   page.should have_css("h2", :text => "Your Album Collection")
+  #   # do
+  #   #     page.should have_content("Your Album Collection")
+  #   #   end
+  #   # click_link 'Add Album'
+  #   fill_in 'Search', :with => 'Licensed To Ill'
+  #   click_button 'Search'
+  #   page.should have_content('Licensed to Ill')
+  #   within("div#beastie-boys") do
+  #     click_on "Add This Album"
+  #   end
+  # end
 
 end

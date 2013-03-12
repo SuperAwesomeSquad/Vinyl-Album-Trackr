@@ -1,4 +1,7 @@
 <%= render 'album' %>
+<% if !current_user.album_ids.include? @album.id %>
+<%= link_to 'Add This Album', albums_path(:discogs_id => @album.discogs_id), :method => 'POST' %>
+<% end %>
 <%= link_to "Edit Album", edit_album_path(@album) %>
 <%= link_to "Delete Album",
 	album_path(@album),

@@ -6,96 +6,102 @@ class AlbumsController < ApplicationController
  API_URL = "http://api.discogs.com/"
  before_filter :authenticate_user!, :except => [:index, :show]
  before_filter :find_album, :only => [:show,
-								 	  :edit,
-	 								  :update,
-	 								  :destroy]
+  :edit,
+  :update,
+  :destroy]
 
-    def index
-      @albums = Album.all
-    end
-	 	def new
-	 	end
+  def index
+    @albums = Album.all
+  end
+  def new
+  end
 
-	 	def create
-	 		@params = params
-	 		discogs_data = make_album_request(params[:discogs_id])
-	 		@album = Album.new({
-	 			:discogs_id => discogs_data["id"],
-	 			:title => discogs_data["title"],
-	 			:tracklist => discogs_data["tracklist"],
-	 			:artists => discogs_data["artists"],
-	 			:year => discogs_data["year"],
-	 			:genres => discogs_data["genres"],
-	 			:styles => discogs_data["styles"]
-	 			})
-	 		if @album.save
-	 			flash[:success] = "Album has been created."
-        current_user.collections.last.albums << @album
-	 			redirect_to @album
-	 		else
-	 			flash[:error] = "Album has not been created because you're lame."
-	 			render :action => "new"
-	 		end
-	 	end
+  def create
+    @params = params
+    discogs_data = make_album_request(params[:discogs_id])
+    if Album.where(:discogs_id => discogs_data["id"]).exists?
+      current_user.collections.last.albums << Album.where(:discogs_id => discogs_data["id"])
+      flash[:success] = "Album has been added."
+      redirect_to current_user.albums.last
+    else
+      @album = Album.new({
+       :discogs_id => discogs_data["id"],
+       :title => discogs_data["title"],
+       :tracklist => discogs_data["tracklist"],
+       :artists => discogs_data["artists"],
+       :year => discogs_data["year"],
+       :genres => discogs_data["genres"],
+       :styles => discogs_data["styles"]
+       })
+      if @album.save
+       flash[:success] = "Album has been created."
+       current_user.collections.last.albums << @album
+       redirect_to @album
+     else
+       flash[:error] = "Album has not been created because you're lame."
+       render :action => "new"
+     end
+   end
+ end
 
-	 	def update
-	 		if @album.update_attributes(params[:album])
-	 			flash[:success] = "Album has been updated."
-	 			redirect_to @album
-	 		else
-	 			flash[:error] = "Empty fields aren't allowed, dummy."
-	 			render :action => "edit"
-	 		end
-	 	end
+ def update
+  if @album.update_attributes(params[:album])
+   flash[:success] = "Album has been updated."
+   redirect_to @album
+ else
+   flash[:error] = "Empty fields aren't allowed, dummy."
+   render :action => "edit"
+ end
+end
 
-	 	def destroy
-	 		@album.destroy
-	 		flash[:success] = "Album has been deleted."
-	 		redirect_to albums_path
-	 	end
+def destroy
+  @album.destroy
+  flash[:success] = "Album has been deleted."
+  redirect_to albums_path
+end
 
-	 	def discogs_view_album
-	 		if params["discogs_id"]
-	 			@album = make_album_request(params["discogs_id"])
-	 		else
-	 			flash[:error] = "No album ID specified."
-	 			redirect_to new_album_path
-	 		end
-	 	end
+def discogs_view_album
+  if params["discogs_id"]
+   @album = make_album_request(params["discogs_id"])
+ else
+   flash[:error] = "No album ID specified."
+   redirect_to new_album_path
+ end
+end
 
-	 	def discogs_search
-	 		if params["q"].empty?
-	 			flash[:error] = "No search terms entered; please try again."
-	 			redirect_to new_album_path
-	 		end
+def discogs_search
+  if params["q"].empty?
+   flash[:error] = "No search terms entered; please try again."
+   redirect_to new_album_path
+ end
 
-	 		@results = search_for_album({
-	 			q: params["q"],
-	 			type: "master"
-	 			})
+ @results = search_for_album({
+   q: params["q"],
+   type: "master"
+   })
 
-	 		if @results.empty?
-	 			flash[:error] = "No results found; please try again."
-	 			redirect_to new_album_path
-	 		end
-	 	end
+ if @results.empty?
+   flash[:error] = "No results found; please try again."
+   redirect_to new_album_path
+ end
+end
 
-	 	private
-	 	def find_album
-	 		@album = Album.find(params[:id])
-	 	rescue ActiveRecord::RecordNotFound
-	 		flash[:error] = "The album you were looking for could not be found."
-	 		redirect_to albums_path
-	 	end
-	 	def make_get_request(request,request_params=nil)
-	 		url = URI.parse("#{API_URL}#{request}")
-	 		url.query = URI.encode_www_form(request_params) unless request_params.nil?
-	 		req = Net::HTTP::Get.new(url.request_uri)
-	 		req['User-Agent'] = USER_AGENT
-	 		res = Net::HTTP.start(url.host,url.port) { |http|
-	 			http.request(req)
-	 		}
-	 		if res.code.to_i == 200
+private
+def find_album
+  @album = Album.find(params[:id])
+rescue ActiveRecord::RecordNotFound
+  flash[:error] = "The album you were looking for could not be found."
+  redirect_to albums_path
+end
+def make_get_request(request,request_params=nil)
+  url = URI.parse("#{API_URL}#{request}")
+  url.query = URI.encode_www_form(request_params) unless request_params.nil?
+  req = Net::HTTP::Get.new(url.request_uri)
+  req['User-Agent'] = USER_AGENT
+  res = Net::HTTP.start(url.host,url.port) { |http|
+   http.request(req)
+ }
+ if res.code.to_i == 200
    			JSON.parse(res.body) # Send a nicely-parsed JSON object back
    		else
    			raise "Error"

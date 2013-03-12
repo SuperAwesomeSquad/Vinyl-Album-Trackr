@@ -6,7 +6,7 @@ feature 'Viewing individual album information from discogs' do
     user.confirm!
 
     visit '/'
-    click_link "Add to My Collection"
+    click_link "My Collection"
     message = "You need to sign in or sign up before continuing."
     page.should have_content(message)
 
@@ -31,4 +31,6 @@ feature 'Viewing individual album information from discogs' do
   #   fill_in "Search", :with => "Derp derkejfhdsaklfhasklfhwieuhwgsd sdfskdjafh"
   #   click_button 'Search'
   #   page.should have_content("No results found; please try again."
+end
+
 end

@@ -1,5 +1,6 @@
 <% link_to "Add New Collection", new_collection_path %>
 
+
 <h2>Your Album Collection</h2>
 <% if current_user.collections.last.albums.empty? %>
 <p>Your collection is devoid of albums. :( Why not <%= link_to "add one", new_album_path %>?</p>

@@ -8,7 +8,6 @@ feature 'Signing up' do
 		fill_in "Password", :with => "password"
 		fill_in "Password confirmation", :with => "password"
 		click_button "Sign up"
-		page.should have_content("You need to sign in or sign up before continuing.")
 		page.should have_content("You have signed up successfully.")
 	end
 end

@@ -70,13 +70,13 @@ def discogs_view_album
 end
 
 def discogs_search
-  if params["q"].empty?
+  if params["Search"].empty?
    flash[:error] = "No search terms entered; please try again."
    redirect_to new_album_path
  end
 
  @results = search_for_album({
-   q: params["q"],
+   q: params["Search"],
    type: "master"
    })
 

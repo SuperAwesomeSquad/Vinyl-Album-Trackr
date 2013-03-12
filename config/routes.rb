@@ -1,8 +1,6 @@
 Celluloid::Application.routes.draw do
   devise_for :users
 
-  # devise_for :admin_users, ActiveAdmin::Devise.config
-
   resources :albums do
     collection do
       post 'discogs_search'
@@ -12,11 +10,7 @@ Celluloid::Application.routes.draw do
     end
   end
 
-  # resources :users
-
   resources :collections
-
-  # resources :albums
 
   # resources :albums do
   #   # resources :collection

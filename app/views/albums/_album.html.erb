@@ -1,4 +1,4 @@
-<h2><%= @album["title"] %> - <%= @album["artists"].first["name"] %> (<%= @album["year"] %>)</h2><% if ((request[:action] != "discogs_view_album") &&    (@album.user_ids.include?(current_user.id))) %>
+<h2><%= @album["title"] %> - <%= @album["artists"].first["name"] %> (<%= @album["year"] %>)</h2><% if ((request[:action] != "discogs_view_album") && !current_user.nil? &&    (@album.user_ids.include?(current_user.id))) %>
 <p><i class="icon-ok"></i> This album is in one of your collections!  </p>
 <% end %>
 <h4>Genre<%= "s" if @album["genres"].size > 1 %></h4>

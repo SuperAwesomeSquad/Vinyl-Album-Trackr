@@ -23,6 +23,6 @@ production:
   adapter: mysql2
   database: celluloid_production 
   user: root
-  password: 
+  password: ntsigado
   host: 127.0.0.1
   port: 3306

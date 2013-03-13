@@ -24,6 +24,5 @@
 /public/assets/*
 
 /config/database.yml
-database.yml
 # Ignore vim temp
 *~

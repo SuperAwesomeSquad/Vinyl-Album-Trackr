@@ -23,6 +23,7 @@
 # Ignore precompiled assets
 /public/assets/*
 
+/config/database.yml
 
 # Ignore vim temp
 *~

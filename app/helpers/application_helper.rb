@@ -1,4 +1,7 @@
 module ApplicationHelper
+  def twitterLinkMaker(handle)
+    "<a href='http://twitter.com/#{handle}'>@#{handle}</a>".html_safe
+  end
   def albumList(list=@albums)
     text = "<ul>"
       list.each do |album|

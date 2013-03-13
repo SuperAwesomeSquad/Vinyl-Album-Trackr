@@ -22,3 +22,7 @@
 
 # Ignore precompiled assets
 /public/assets/*
+
+
+# Ignore vim temp
+*~

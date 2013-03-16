@@ -109,33 +109,32 @@ def make_get_request(request,request_params=nil)
    		end
    	end
 
-def make_album_request(id)
-	request = "master/#{id}"
-	pretty_album_results(make_get_request(request))
-end
+    def make_album_request(id)
+     request = "master/#{id}"
+     pretty_album_results(make_get_request(request))
+   end
 
-def search_for_album(params)
-	request = "database/search"
-	pretty_search_results(make_get_request(request,params))
-end
+   def search_for_album(params)
+     request = "database/search"
+     pretty_search_results(make_get_request(request,params))
+   end
 
-def pretty_search_results(hash)
-  big_ole_array_of_hashes = []
-  hash["results"].each do |album|
-	big_ole_array_of_hashes << {
-		artist: album["title"].split(" - ")[0],
-		title: album["title"].split(" - ")[1],
-		year: album["year"],
-		discogs_id: album["id"],
-		genres: album["genres"]
-	}
+   def pretty_search_results(hash)
+    big_ole_array_of_hashes = []
+    hash["results"].each do |album|
+     big_ole_array_of_hashes << {
+      artist: album["title"].split(" - ")[0],
+      title: album["title"].split(" - ")[1],
+      year: album["year"],
+      discogs_id: album["id"],
+      genres: album["genres"]
+    }
+    end
+    big_ole_array_of_hashes
   end
-  big_ole_array_of_hashes
-end
 
-def pretty_album_results(hash)
-	hash["resp"]["master"]
-	# hash
-end
+  def pretty_album_results(hash)
+	 hash["resp"]["master"]
+  end
 
 end

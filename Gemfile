@@ -6,6 +6,8 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'activeadmin'
 gem 'devise'
+gem 'haml'
+gem 'haml-rails'
 
 
 group :assets do

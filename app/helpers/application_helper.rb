@@ -36,7 +36,7 @@ module ApplicationHelper
   end
 
   def currentPageActiveClass(short_path)
-    "class='active'".html_safe if short_path == request.path
+    "active".html_safe if short_path == request.path
   end
 
   def diagnosticInformation

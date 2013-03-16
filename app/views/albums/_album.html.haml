@@ -1,0 +1,50 @@
+%h2 #{@album["title"]} - #{@album["artists"].first["name"]} (#{@album["year"]})
+
+-if ((request[:action] != "discogs_view_album") && !current_user.nil? &&    (@album.user_ids.include?(current_user.id)))
+  %p
+    %i.icon-ok
+    This album is in one of your collections!
+-if @album["genres"]
+  %h4 Genre #{"s" if @album["genres"].size > 1}
+  %ul.genres
+    -@album["genres"].each do |genre|
+      %li
+        =genre
+
+-if @album["styles"]
+  %h4 Style #{"s" if @album["styles"].size > 1}
+  %ul
+    -@album["styles"].each do |style|
+      %li
+        =style
+
+-if @album["artists"].size > 1
+  %h4 Artists
+  %table.table.table-striped
+    %tr
+      %th Artist
+      %th Tracks
+      %th Role
+    -@album["artists"].each do |artist|
+      %tr
+        %td
+          =artist["name"]
+        %td
+          =artist["tracks"]
+        %td
+          =artist["role"]
+
+%h4 Tracklist
+%table.table.table-striped
+  %tr
+    %th Track #
+    %th Name
+    %th Duration
+  -@album["tracklist"].each do |track|
+    %tr
+      %td
+        =track["position"]
+      %td
+        =track["title"]
+      %td
+        =track["duration"].empty? ? "Data unknown <i class='icon-thumbs-down'></i>".html_safe : track["duration"]

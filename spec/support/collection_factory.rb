@@ -1,5 +1,5 @@
-FactoryGirl.define do
-	factory :collection do
-		name "Testing"
-	end
-end
+# FactoryGirl.define do
+# 	factory :collection do
+# 		name "Testing"
+# 	end
+# end

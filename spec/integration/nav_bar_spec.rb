@@ -18,7 +18,12 @@ feature 'Navigation Bar' do
   end
 
   scenario "should show proper links when logged in" do
-    sign_in_as
+    sign_in_as!(user)
+    visit root_path
+    page.should have_link("Log Out")
+    page.should_not have_link("Log In")
+    page.should_not have_link("Sign Up")
+  end
 
   # scenario "Link to View All Albums" do
   #   click_link('View All Albums')

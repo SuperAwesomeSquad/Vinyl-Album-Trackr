@@ -2,6 +2,8 @@ require 'spec_helper'
 
 feature 'Navigation Bar' do
 
+  let!(:user) { Factory(:user)}
+
   scenario "should be provide navigation functionality" do
     visit root_path
     page.should have_link("My Collection")
@@ -14,6 +16,9 @@ feature 'Navigation Bar' do
     page.should have_link("Log In")
     page.should have_link("Sign Up")
   end
+
+  scenario "should show proper links when logged in" do
+    sign_in_as
 
   # scenario "Link to View All Albums" do
   #   click_link('View All Albums')

@@ -16,7 +16,7 @@
       .navbar-inner
         %ul.nav
           %li{class: currentPageActiveClass(root_path)}
-            =link_to "#{image_tag('celluloid.png', :size => '15x15', :class => 'img-circle')} Celluloid".html_safe, root_path, :class => "brand"
+            =link_to "#{image_tag('celluloid.png', :size => '15x15', :class => 'img-circle')}Celluloid".html_safe, root_path, :class => "brand"
           %li{class: currentPageActiveClass(collections_path)}
             =link_to "My Collection", collections_path
           %li{class: currentPageActiveClass(albums_path)}
@@ -49,5 +49,8 @@
     =yield
     =diagnosticInformation
     %hr
-    %p.muted.text-center
-      Made with love (and thin mints) by #{twitterLinkMaker("allynfolksjr")} and #{twitterLinkMaker("grrlcoder")} in Seattle.
+
+    .row.footer
+      .span12
+        %p.muted.text-center
+          Made with love (and thin mints) by #{twitterLinkMaker("allynfolksjr")} and #{twitterLinkMaker("grrlcoder")} in Seattle.

@@ -1,5 +1,6 @@
 #!/bin/bash
-RAILS_ENV=production
+export RAILS_ENV=production
+export GEM_HOME=~/rubygems
 ./bin/thin stop -d -e production --servers 4
 git fetch
 git merge origin/master
